@@ -1,0 +1,45 @@
+server:
+  port: 9668
+spring:
+  application:
+    name: cloud-config-client-9668
+  cloud:
+    ##配置中心客户端配置
+    config:
+      label: master #分支名称
+      name: config  #配置文件名称
+      profile: dev #文件后缀
+      uri: http://localhost:9666 #配置中心服务端地址
+      #上述四项综合：master分支上config-dev.yml的配置文件被读取。
+      #http://localhost:9666/master/config-dev.yml
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  instance:
+    instance-id: config-client-9668
+    #访问路径可以显示IP地址
+    prefer-ip-address: true
+    #发送心跳的间隔时间：秒
+    lease-renewal-interval-in-seconds: 1
+    #服务端收到心跳后等待的时间:秒
+    lease-expiration-duration-in-seconds: 2
+  client:
+    #是否将自己注册进eureka-server 默认true
+    register-with-eureka: true
+    #是否从eureka-server抓取自己已有的注册信息，默认true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    #注册的服务的地址
+    service-url:
+      #单机配置
+      #defaultZone: http://localhost:7001/eureka
+      #集群配置
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+#暴漏监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

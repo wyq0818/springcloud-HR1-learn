@@ -1,0 +1,32 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-consumer-order-hystrix-80
+eureka:
+  instance:
+    instance-id: order-hystrix-80
+    #访问路径可以显示IP地址
+    prefer-ip-address: true
+    #发送心跳的间隔时间：秒
+    lease-renewal-interval-in-seconds: 1
+    #服务端收到心跳后等待的时间:秒
+    lease-expiration-duration-in-seconds: 2
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      #集群配置
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+#断路器负载均衡配置
+feign:
+  hystrix:
+    enabled: true
+#断路器超时时间配置
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMillseconds: 10000

@@ -1,0 +1,48 @@
+server:
+  port: 9666
+spring:
+  application:
+    name: cloud-config-server-9666
+  #配置文件的存放位置，利用git构建
+  cloud:
+    config:
+      server:
+        git:
+          #仓库地址
+          uri: https://github.com/wyq0818/cloud2020-config-server.git
+          #搜索目录
+          search-paths:
+            - configfile
+      #读取分支
+      label: master
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  instance:
+    instance-id: config-server-9666
+    #访问路径可以显示IP地址
+    prefer-ip-address: true
+    #发送心跳的间隔时间：秒
+    lease-renewal-interval-in-seconds: 1
+    #服务端收到心跳后等待的时间:秒
+    lease-expiration-duration-in-seconds: 2
+  client:
+    #是否将自己注册进eureka-server 默认true
+    register-with-eureka: true
+    #是否从eureka-server抓取自己已有的注册信息，默认true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    #注册的服务的地址
+    service-url:
+      #单机配置
+      #defaultZone: http://localhost:7001/eureka
+      #集群配置
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+#暴漏bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"

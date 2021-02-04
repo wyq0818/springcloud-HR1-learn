@@ -1,0 +1,39 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: cloud-gateway-9527
+  cloud:
+    gateway:
+      #开启从注册中心动态创建路由的功能，利用我服务的名进行路由
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: payment_route  #路由的id，没有固定的规则，要求唯一，一般会配合服务名见名知意
+        #uri: http://localhost:8001  #匹配后提供服务的路由地址
+        uri: lb://CLOUD-PROVIDER-PAYMENT  #匹配注册中心的服务名,必须是lb:标识
+        predicates:
+        - Path=/payment/selectList  #断言，路径相匹配的进行路由
+      - id: payment_route2
+        uri: lb://CLOUD-PROVIDER-PAYMENT
+        predicates:
+        - Path=/payment/selectOneById/**
+        #- After=2021-01-12T14:22:25.234+08:00[Asia/Shanghai]  #在此时间之后的请求有效
+        #- Before=2021-03-12T14:22:25.234+08:00[Asia/Shanghai]  #在此时时间之前的请求有效
+        #- Between=2021-02-12T14:22:25.234+08:00[Asia/Shanghai],2021-03-12T14:22:25.234+08:00[Asia/Shanghai] #在此时间段之间的请求有效
+        #- Query=uname,wyq
+eureka:
+  instance:
+    instance-id: gateway-9527
+    #访问路径可以显示IP地址
+    prefer-ip-address: true
+    #发送心跳的间隔时间：秒
+    lease-renewal-interval-in-seconds: 1
+    #服务端收到心跳后等待的时间:秒
+    lease-expiration-duration-in-seconds: 2
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka

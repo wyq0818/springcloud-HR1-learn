@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cloud-api-commons" />
+        <module name="cloud-bus-server-9701" />
+        <module name="cloud-config-client-9667" />
+        <module name="cloud-config-client-9668" />
+        <module name="cloud-config-server-9666" />
+        <module name="cloud-consumer-hystrix-dashboard-9001" />
+        <module name="cloud-consumer-order-feign-80" />
+        <module name="cloud-consumer-order-hystrix-80" />
+        <module name="cloud-eureka-server-7001" />
+        <module name="cloud-eureka-server-7002" />
+        <module name="cloud-gateway-9527" />
+        <module name="cloud-provider-payment-8001" />
+        <module name="cloud-provider-payment-8002" />
+        <module name="cloud-provider-payment-hystrix-8003" />
+        <module name="cloud-provider-payment-zookeeper-8004" />
+        <module name="cloud-stream-rabbitMQ-consumer-6002" />
+        <module name="cloud-stream-rabbitMQ-consumer-6003" />
+        <module name="cloud-stream-rabbitMQ-provider-6001" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloud-sleuth-6101" target="1.8" />
+      <module name="cloudproviderpayment8001" target="1.8" />
+      <module name="wyq-eureka" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="PREFER_TARGET_JDK_COMPILER" value="false" />
+  </component>
+</project>

@@ -1,0 +1,4 @@
+com\wyq\springcloud\config\ApplicationContextConfig.class
+com\wyq\springcloud\controller\OrderController.class
+com\wyq\ribbonConfig\RibbonRuleConfig.class
+com\wyq\springcloud\OrderMain80.class
