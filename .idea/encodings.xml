@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cloud-api-commons" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cloud-bus-server-9701" charset="UTF-8" />
@@ -21,7 +21,6 @@
     <file url="file://$PROJECT_DIR$/cloud-stream-rabbitMQ-consumer-6002" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cloud-stream-rabbitMQ-consumer-6003" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cloud-stream-rabbitMQ-provider-6001" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/wyq-eureka" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
